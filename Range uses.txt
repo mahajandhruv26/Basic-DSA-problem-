@@ -1,0 +1,33 @@
+Range in for loop
+for(int num:number){
+cout<<num;// num has the copy of each element
+it means 
+for(int i=0;i<number.size();i++){
+int num=number[i];
+cout<<num;
+
+
+for (int& num : number) {
+    num *= 2; // modifies the actual container
+}
+for(int i=0;i<number.size();i++){
+number[i]*=2;
+ex:
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> numbers = {1, 2, 3, 4, 5};
+
+    // Modify each element using reference
+    for (int& num : numbers) {
+        num *= 2; // doubles the value in-place
+    }
+
+    // Print updated vector
+    for (const int& num : numbers) {      output:
+        std::cout << num << " ";          //2 4 6 8 10
+    }
+
+    return 0;
+}

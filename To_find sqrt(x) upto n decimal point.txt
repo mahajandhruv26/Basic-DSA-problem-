@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+    int mySqrt(int x) {
+        if (x < 2) return x;
+
+        int left = 1, right = x / 2, ans = 0;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (mid <= x / mid) {  // prevents overflow from mid * mid
+                ans = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return ans;
+    }
+double morePrecise(int temp,int n, int precise){
+    double factor=1;
+    double ans =temp;
+    for(int i=0;i<precise;i++){
+        factor=factor/10;
+        for(double j=ans;j*j<n;j=j+factor){
+            ans=j;
+        }
+    }
+    return ans;
+}
+int main(){
+    int n;
+    cout<<"enter the no. to find its sqrt: ";
+    cin>>n;
+    int p;
+    cout<<"digit of decimal the result required:";
+    cin>>p;
+    int temp=mySqrt(n);
+    cout<<morePrecise(temp,n,p);
+    return 0;
+    
+}

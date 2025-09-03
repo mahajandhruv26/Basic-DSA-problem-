@@ -1,0 +1,138 @@
+/* you are given two integer m and n 
+find the mth prime no and calculate the sum of digit until it becomes single digit 
+then multibly with mth prime no.
+test case 1 :
+input 6 8 
+output 52
+explanation: 6th prime no is 13--> 1+3=4 
+4*13=52
+case 2 
+input:10 50 
+output:58*/
+#include<iostream>
+#include<math.h>
+using namespace std;
+bool prime(int n){
+    if(n==1 || n==0){
+        return false;
+    }
+    if (n==2){
+        return true;
+    }
+    for(int i=2;i*i<=n;i++){ //for not using i<sqrt(n)
+        if(n%i==0){
+            return false;
+        }
+        
+    }
+    return true;
+}
+int sum(int n){
+    int res=0;
+    while(n){
+        res+=n%10;
+        n/=10;
+    }
+    return res;
+}
+int digi(int n){
+    int c=0;
+    int a=1;
+    while(c<n){
+        a++;
+        if(prime(a)){
+            c++;
+        }
+        //return a; it will give the mth prime no
+    }
+    int add=0;
+    add=sum(a);
+    while(add>=10){
+        add=sum(add);
+        }
+    return add*a;
+}
+    
+int main(){
+    int n,m;
+    cin>>m>>n;
+    cout<<digi(m);
+}
+  OR with better structures
+
+#include<iostream>
+#include<math.h>
+#include<climits>
+using namespace std;
+bool prime(int n){
+    if(n==1 || n==0){
+        return false;
+    }
+    if (n==2){
+        return true;
+    }
+    for(int i=2;i*i<=n;i++){ //for not using i<sqrt(n)
+        if(n%i==0){
+            return false;
+        }
+        
+    }
+    return true;
+}
+int sum(int n){
+    int res=0;
+    while(n){
+        res+=n%10;
+        n/=10;
+    }
+    return res;
+}
+int mthprime(int n){
+    int c=0;
+    int a=1;
+    while(c<n){
+        a++;
+        if(prime(a)){
+            c++;
+        }
+    }
+    return a; //it will give the mth prime no
+}
+int digi(int m){
+    int add=0;
+    int a=mthprime(m);
+    add=sum(a);
+   /* while(true){
+    
+    if(add>=10){
+        add=sum(add);
+    }
+    if(add<10){
+    
+        break;
+    }
+    }*/
+    add=sum(a);
+    if(add>10){
+        add=sum(add);
+    }
+    /*while(add>=10){ //not required for the loop as there doesnt exist any prime no whose sum is more than 2 digits 
+        add=sum(add);
+    }*/
+    
+    return add;
+}
+int ans(int m){
+    int res=digi(m)*mthprime(m);
+    return res;
+}
+    
+int main(){
+    int n,m;
+    cout<<"enter mth prime no. and nth prime no.";
+    cin>>m>>n;
+    cout<<"the mth prime no:"<<mthprime(m)<<endl;
+    cout<<"sum of digit untill single digit"<<digi(m)<<endl;
+    cout<<"the result mth prime no multipy sum of its digit:"<<ans(m);
+    cout<<endl<<INT_MAX;
+}

@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+bool fin(int arr[100][100],int target ,int r,int c){
+     for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            if(arr[i][j]==target){
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+int main(){
+    int arr[100][100];
+    int c,r;
+    cout<<"enter no of rows";
+    cin>>r;
+    cout<<"enter no of column";
+    cin>>c;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cout<<"enter elment in row: "<< i+1<<" and column: "<<j+1<<endl;
+            cin>>arr[i][j];
+        }
+    }
+    cout<<"element to search: ";
+    int s;
+    cin>>s;
+    for(int i=0;i<r;i++){
+        for(int j=0;j<c;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    if(fin(arr,s,r,c)){
+        cout<<"present";
+    }
+    else{
+        cout<<"not present";
+    }
+}

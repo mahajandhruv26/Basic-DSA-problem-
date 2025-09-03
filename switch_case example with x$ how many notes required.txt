@@ -1,0 +1,43 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main() {
+    int n,a,b;
+    a=b=0;
+    cout << "Enter a number: ";
+    cin >> n;
+    switch(1){
+	    case 1:
+	    a=n/100;
+    	cout<<a<<" "<<"no. of 100 notes required"<<endl;
+    	n=n%100;
+    	a=0;
+    	case 2:
+    	a=n/50;
+    	cout<<a<<" "<<"no. of 50 notes required"<<endl;
+    	n=n%50;
+    	a=0;
+    	case 3:
+    	a=n/20;
+    	cout<<a<<" "<<"no. of 20 notes required"<<endl;
+    	n=n%20;
+    	a=0;
+    	case 4:
+    	a=n/10;
+    	cout<<a<<" "<<"no. of 10 notes required"<<endl;
+    	n=n%10;
+    	a=0;
+    	case 5:
+    	a=n/5;
+    	cout<<a<<" "<<"no. of 5 notes required"<<endl;
+    	n=n%5;
+    	a=0;
+    	case 6:
+    	a=n/1;
+    	cout<<a<<" "<<"no. of 1 notes required"<<endl;
+    	n=n%1;
+    	a=0;
+    	default :
+    	cout<<"this notes should be required"<<endl;
+}
+}

@@ -1,0 +1,46 @@
+use of find and erase
+s.find(part) will check all character of sub string part in string s if it is found in the string s then it will return the first index where it is found in the string s. if  not found then it will return like 4294967295 (depends on system).
+string::npos is a very large number, like 4294967295 (depends on system).
+s.find(part) != string::npos
+🔍 What is string::npos?
+It stands for "no position".
+Value: typically 4294967295 (i.e., -1 for size_t)
+When s.find(part) doesn't find the substring, it returns string::npos.
+So:
+If part is found: s.find(part) → returns index (like 0, 3, etc.)
+If not found: s.find(part) → returns string::npos
+
+s.erase(pos, len);
+erase(3,4) it will erase from index 3 to 7(3+4).
+
+question link https://leetcode.com/problems/remove-all-occurrences-of-a-substring/description/
+
+class Solution {
+public:
+    string removeOccurrences(string s, string part) {
+        while(s.length()!=0 && s.find(part)<s.length()){
+            s.erase(s.find(part),part.length());
+        }
+        /*int size = s.length();
+        int newsize = -1;
+
+        while (size != newsize) {
+            size = s.length();
+            string res;
+
+            for (int i = 0; i < size; i++) {
+                // Check if part can start at i
+                if (i + part.length() <= s.length() && s.substr(i, part.length()) == part) {
+                    i += part.length() - 1; // Skip the 'part' substring
+                } else {
+                    res.push_back(s[i]); // Otherwise, keep the character
+                }
+            }
+
+            s = res;
+            newsize = s.length();
+        }*/
+
+        return s;
+    }
+};

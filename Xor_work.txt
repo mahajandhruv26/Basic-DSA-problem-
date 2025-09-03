@@ -1,0 +1,13 @@
+https://bit.ly/3dm6bdZ 
+lecture :10 time 16:43 
+xor great use to solve the problem for finding unique element there are only one element comes single and every other occur twice.
+int findDuplicate(std::vector<int>& nums) {
+   int ans=0;
+   for(int i=0;i<nums.size();i++){
+       ans=ans^nums[i];
+   }
+   for(int i=0;i<nums.size();i++){
+       ans=ans^i;
+   }
+   return ans;
+}

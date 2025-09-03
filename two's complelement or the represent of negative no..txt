@@ -1,0 +1,31 @@
+two's complelement or the representation how the -ve no. is been store in the memory of 32bits(int storage allocated)
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    cout << "Bits are: ";
+    for (int i = 31; i >= 0; i--) {
+        int mask = 1 << i;
+        cout << ((num & mask) ? 1 : 0);
+        if (i % 4 == 0)
+            cout << " ";
+    }
+    cout << endl;
+
+    int twosComplement = ~abs(num) + 1;
+    cout << "Two's complement is: ";
+    for (int i = 31; i >= 0; i--) {
+        int mask = 1 << i;
+        cout << ((twosComplement & mask) ? 1 : 0);
+        if (i % 4 == 0)
+            cout << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
